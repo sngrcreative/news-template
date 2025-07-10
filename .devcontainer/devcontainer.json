@@ -23,7 +23,7 @@
 				"DEVSENSE.phptools-vscode"
 			],
 			"settings": {
-				"composer.workingPath": "./content",
+				"composer.workingPath": "./content"
 			}
 		}
 	}
