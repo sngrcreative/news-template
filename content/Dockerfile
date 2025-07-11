@@ -31,7 +31,8 @@ COPY --chown=www-data:www-data --from=installer /usr/src/app/vendor vendor
 COPY --chown=www-data:www-data --from=installer /usr/src/app/web/wp web/wp
 COPY --chown=www-data:www-data --from=installer /usr/src/app/web/app/mu-plugins web/app/mu-plugins
 COPY --chown=www-data:www-data --from=installer /usr/src/app/web/app/plugins web/app/plugins
-COPY --chown=www-data:www-data config/. web/. ./
+COPY --chown=www-data:www-data config/. ./config
+COPY --chown=www-data:www-data web/. ./web
 
 USER www-data
 EXPOSE 4322
