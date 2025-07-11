@@ -2,9 +2,10 @@
 FROM composer:2.8.9 AS installer
 WORKDIR /usr/src/app
 
-COPY composer.* .
-RUN --mount=type=cache,id=composer,target=/tmp \
-    composer install --ignore-platform-reqs --no-dev --prefer-dist
+RUN --mount=type=bind,source=./composer.json,target=composer.json \
+    --mount=type=bind,source=./composer.lock,target=composer.lock \
+    --mount=type=cache,id=composer,target=/tmp \
+    composer install --no-dev --no-interaction
 
 # Runner image
 FROM php:8.2.29-apache-bookworm AS runner
@@ -30,7 +31,7 @@ COPY --chown=www-data:www-data --from=installer /usr/src/app/vendor vendor
 COPY --chown=www-data:www-data --from=installer /usr/src/app/web/wp web/wp
 COPY --chown=www-data:www-data --from=installer /usr/src/app/web/app/mu-plugins web/app/mu-plugins
 COPY --chown=www-data:www-data --from=installer /usr/src/app/web/app/plugins web/app/plugins
-COPY --chown=www-data:www-data . .
+COPY --chown=www-data:www-data config web ./
 
 USER www-data
 EXPOSE 4322
