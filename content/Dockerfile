@@ -33,5 +33,4 @@ COPY --chown=www-data:www-data --from=installer /usr/src/app/web/app/mu-plugins 
 COPY --chown=www-data:www-data --from=installer /usr/src/app/web/app/plugins web/app/plugins
 COPY --chown=www-data:www-data config web ./
 
-USER www-data
 EXPOSE 4322
