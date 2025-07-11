@@ -27,7 +27,6 @@ auth.json
 wp-cli.local.yml
 
 # Excluded files
-server
 .gitignore
 LICENSE.md
 pint.json
