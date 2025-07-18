@@ -40,7 +40,8 @@
     "roots/wordpress": "6.8.1",
     "roots/wp-config": "1.0.0",
     "wpackagist-plugin/wordpress-importer": "^0.8.4",
-    "wpackagist-plugin/wp-graphql": "^2.3"
+    "wpackagist-plugin/wp-graphql": "^2.3",
+    "wpackagist-plugin/fakerpress": "^0.8.0"
   },
   "require-dev": {
     "roave/security-advisories": "dev-latest",
