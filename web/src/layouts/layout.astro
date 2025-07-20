@@ -1,0 +1,18 @@
+---
+import BaseLayout, { type Props as BLProps } from './base.astro'
+import Meta, { type Props as MetaProps } from './meta.astro'
+
+export interface Props extends BLProps, MetaProps {}
+const { title, description, hide, class: className, ...props } = Astro.props
+---
+
+<BaseLayout class:list={[className]} {...props}>
+  {/* <body/> */}
+  <slot />
+
+  {/* <head/> */}
+  <Fragment slot='head'>
+    <Meta {...{ title, description, hide }} />
+    <slot name='head' />
+  </Fragment>
+</BaseLayout>

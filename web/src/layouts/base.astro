@@ -1,0 +1,16 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import Head from './head.astro'
+
+export interface Props extends Omit<HTMLAttributes<'body'>, 'title'> {}
+const { class: className, ...props } = Astro.props
+---
+
+<html lang='en'>
+  <Head>
+    <slot name='head' />
+  </Head>
+  <body class:list={[className]} {...props}>
+    <slot />
+  </body>
+</html>

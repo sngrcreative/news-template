@@ -3,26 +3,26 @@
 //
 // See https://aka.ms/devcontainer.json for more information.
 {
-	"name": "news-template",
-	// Use "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
-	// instead of the build to use a pre-built image.
-	"build": {
-        "context": ".",
-        "dockerfile": "Dockerfile"
-    },
-	// Features add additional features to your environment. See https://containers.dev/features
-	// Beware: features are not supported on all platforms and may have unintended side-effects.
-	"features": {
-      "ghcr.io/devcontainers/features/docker-in-docker": {}
-    },
-	"customizations": {
-		"vscode": {
-			"extensions": [
-				"DEVSENSE.phptools-vscode"
-			],
-			"settings": {
-				"composer.workingPath": "./content"
-			}
-		}
-	}
+  "name": "news-template",
+  // Use "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+  // instead of the build to use a pre-built image.
+  "build": {
+    "context": ".",
+    "dockerfile": "Dockerfile"
+  },
+  // Features add additional features to your environment. See https://containers.dev/features
+  // Beware: features are not supported on all platforms and may have unintended side-effects.
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker": {},
+    "ghcr.io/shyim/devcontainers-features/bun:0": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": ["DEVSENSE.phptools-vscode", "astro-build.astro-vscode"],
+      "settings": {
+        "composer.workingPath": "./content"
+      }
+    }
+  },
+  "postCreateCommand": "echo 'export PATH=\"$PATH:/home/vscode/.bun/bin\"' >> /home/vscode/.bashrc && bun install --global prettier"
 }

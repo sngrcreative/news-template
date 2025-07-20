@@ -1,0 +1,29 @@
+---
+export interface Props {
+  title?: string | undefined
+  description?: string | undefined
+  hide?: boolean | undefined
+}
+
+const { title, description, hide } = Astro.props
+const site = {
+  title: 'Astro Base Template',
+  description: 'An opinionated, ultra-minimal Astro template.'
+} satisfies Omit<Props, 'hide'>
+---
+
+{/* Essential Metadata */}
+<title>
+  {
+    title
+      ? `${title} \u2014 ${site.title}`
+      : `${site.title} \u2014 ${site.description}`
+  }
+</title>
+<meta name='description' content={description || site.description} />
+
+{/* Icons */}
+<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+
+{/* Visibility Settings */}
+{hide && <meta name='robots' content='noindex, nofollow' />}
