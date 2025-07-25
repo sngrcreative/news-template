@@ -1,0 +1,27 @@
+---
+import PageLayout, { type Props as LProps } from '~/layouts/page.astro'
+import type { GetStaticPaths } from 'astro'
+import { getCollection, render } from 'astro:content'
+
+export const getStaticPaths = (async () => {
+  const pages = await getCollection('pages')
+
+  return pages.map((page) => ({
+    params: {
+      page: page.id
+    },
+    props: { page }
+  }))
+}) satisfies GetStaticPaths
+
+const { page } = Astro.props
+const { Content } = await render(page)
+
+const props = {
+  title: page.data.title
+} satisfies LProps
+---
+
+<PageLayout {...props}>
+  <Content />
+</PageLayout>

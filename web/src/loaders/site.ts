@@ -14,9 +14,11 @@ const siteLoader = (): Loader => {
         id: 'SITE',
         data: { ...data }
       })
+      const digest = ctx.generateDigest(parsedData)
       ctx.store.set({
         id: 'SITE',
-        data: { ...parsedData }
+        data: { ...parsedData },
+        digest
       })
     },
     schema: z.object({

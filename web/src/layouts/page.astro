@@ -1,0 +1,23 @@
+---
+import Layout, { type Props as LProps } from './layout.astro'
+
+export interface Props extends LProps {}
+
+const { title, class: className, ...props } = Astro.props
+---
+
+<Layout title={title} class:list={[className]} {...props}>
+  {/* <body/> */}
+  <main>
+    <hgroup>
+      <h1>{title}</h1>
+    </hgroup>
+
+    <slot />
+  </main>
+
+  {/* <head/> */}
+  <Fragment slot='head'>
+    <slot name='head' />
+  </Fragment>
+</Layout>
