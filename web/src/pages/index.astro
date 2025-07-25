@@ -1,7 +1,12 @@
 ---
 import Layout from '~/layouts/layout.astro'
+import { getEntry } from 'astro:content'
+import { Debug } from 'astro:components'
+
+const site = await getEntry('site', 'SITE')
 ---
 
 <Layout>
   <h1>Astro</h1>
+  <Debug {site} />
 </Layout>

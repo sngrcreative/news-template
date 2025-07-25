@@ -9,17 +9,22 @@
     "check:style": "prettier --check .",
     "dev": "astro dev",
     "format": "prettier --write .",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "codegen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
-    "astro": "5.10.1"
+    "astro": "5.12.3",
+    "graphql": "^16.11.0"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.4",
+    "@graphql-codegen/cli": "5.0.7",
+    "@graphql-codegen/typescript": "4.1.6",
+    "@types/bun": "^1.2.19",
     "concurrently": "9.2.0",
     "prettier": "3.6.2",
     "prettier-config-standard": "7.0.0",
     "prettier-plugin-astro": "0.14.1",
-    "typescript": "5.8.3"
+    "typescript": "^5.8.3"
   }
 }

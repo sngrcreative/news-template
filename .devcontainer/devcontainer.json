@@ -18,7 +18,11 @@
   },
   "customizations": {
     "vscode": {
-      "extensions": ["DEVSENSE.phptools-vscode", "astro-build.astro-vscode"],
+      "extensions": [
+        "DEVSENSE.phptools-vscode",
+        "astro-build.astro-vscode",
+        "GraphQL.vscode-graphql"
+      ],
       "settings": {
         "composer.workingPath": "./content"
       }
