@@ -2,10 +2,17 @@ const ENDPOINT = import.meta.env.CONTENT_ENDPOINT
 
 export const gql = String.raw
 
-type ExecuteResult<T> = {
-  data: T
-  extensions: any
-}
+type ExecuteResult<T> =
+  | {
+      data: T
+      errors?: undefined
+      extensions: any
+    }
+  | {
+      data?: undefined
+      errors: Array<Record<string, any>>
+      extensions: any
+    }
 
 const execute = async <TResult>(
   query: ReturnType<typeof gql>,
@@ -24,7 +31,12 @@ const execute = async <TResult>(
     throw new Error("Error: Can't retrieve GraphQL data.")
   }
 
-  return (await res.json()) as ExecuteResult<TResult>
+  const result = (await res.json()) as ExecuteResult<TResult>
+  if (result.errors) {
+    throw new Error(`GraphQL Error occured: ${result.errors[0]?.message}`)
+  }
+
+  return result
 }
 
 export default execute

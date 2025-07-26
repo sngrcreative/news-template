@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "astro": "astro",
-    "build": "conc npm:check:* && astro build",
+    "build": "conc bun:check:* && astro build",
     "check:astro": "astro check",
     "check:style": "prettier --check .",
     "dev": "astro dev",
@@ -13,6 +13,7 @@
     "codegen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
+    "@astrojs/node": "^9.3.0",
     "astro": "5.12.3",
     "graphql": "^16.11.0"
   },

@@ -1,19 +1,22 @@
 ---
 import Layout from '~/layouts/layout.astro'
-import { getCollection } from 'astro:content'
+import { getLiveCollection, getLiveEntry } from 'astro:content'
+import { Debug } from 'astro:components'
 
-const pages = await getCollection('pages')
+const pages = await getLiveCollection('posts')
+const test = await getLiveEntry('posts', { id: '/2025/07/hello-world/' })
 ---
 
 <Layout>
   <h1>Astro</h1>
   <ul>
     {
-      pages.map((page) => (
+      pages.entries?.map((page) => (
         <li>
           <a href={page.id}>{page.data.title}</a>
         </li>
       ))
     }
   </ul>
+  <Debug {test} />
 </Layout>
