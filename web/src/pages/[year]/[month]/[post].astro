@@ -15,7 +15,8 @@ if (!post) {
 // @ts-ignore
 const { Content } = await render(post)
 const props = {
-  title: post.data.title ?? ''
+  title: post.data.title ?? '',
+  image: post.data.featuredImage ?? undefined
 } satisfies LProps
 ---
 

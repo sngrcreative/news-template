@@ -1,0 +1,15 @@
+---
+import { getLiveCollection } from 'astro:content'
+
+const pages = await getLiveCollection('posts')
+---
+
+<ul>
+  {
+    pages.entries?.map((page) => (
+      <li>
+        <a href={page.id}>{page.data.title}</a>
+      </li>
+    ))
+  }
+</ul>

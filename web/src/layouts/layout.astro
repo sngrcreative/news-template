@@ -7,10 +7,10 @@ const { title, description, hide, class: className, ...props } = Astro.props
 ---
 
 <BaseLayout class:list={[className]} {...props}>
-  {/* <body/> */}
+  {/* <body /> */}
   <slot />
 
-  {/* <head/> */}
+  {/* <head /> */}
   <Fragment slot='head'>
     <Meta {...{ title, description, hide }} />
     <slot name='head' />
